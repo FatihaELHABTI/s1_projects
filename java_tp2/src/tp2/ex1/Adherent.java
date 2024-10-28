@@ -10,7 +10,11 @@ public class Adherent extends Personne{
         this.numAdherent = numAdherent;
     }
 
-    public String toString(){
-        return super.toString() + ", numAdherent : " + numAdherent;
+    public void afficher(){
+        super.afficher();
+        System.out.println(", numAdherent : " + numAdherent);
     }
+    /*public String toString(){
+        return super.toString() + ", numAdherent : " + numAdherent;
+    }*/
 }

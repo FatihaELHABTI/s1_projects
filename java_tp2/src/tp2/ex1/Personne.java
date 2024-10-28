@@ -16,14 +16,14 @@ public class Personne {
         this.age = age;
     }
 
-    @Override
-    public String toString() {
-        return "Personne{" +
-                "nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
-                ", email='" + email + '\'' +
-                ", tel='" + tel + '\'' +
-                ", age=" + age +
-                '}';
+    public void afficher(){
+        System.out.print("nom='" + nom + ", prenom='" + prenom + ", email='" + email + ", tel='" + tel +
+                ", age=" + age);
     }
+
+    /*@Override
+    public String toString() {
+        return "Personne{" + "nom='" + nom + ", prenom='" + prenom + ", email='" + email + ", tel='" + tel +
+                ", age=" + age;
+    }(*/
 }
