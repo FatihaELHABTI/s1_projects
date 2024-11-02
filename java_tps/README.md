@@ -30,3 +30,5 @@ This program counts the occurrences of each letter in a given text, ignoring cas
 ## Usage
 Each exercise can be run independently in a Java IDE or command line:
 ```bash
+javac tp1/CompterLettres.java
+java tp1.CompterLettres
