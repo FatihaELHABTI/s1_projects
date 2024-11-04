@@ -25,7 +25,7 @@ This exercise involves creating a custom exception, `TropViteException`, and a `
 
 ### 1. `TropViteException` Class
 
-![TropViteException Class](src/ex1/imgs/cap1.png)
+![img_alt](https://github.com/lilyhabti/s1_projects/blob/main/java_tp3/src/ex1/imgs/cap1.PNGg)
 
 ### 2. `Vehicule` Class
 
