@@ -29,13 +29,13 @@ This exercise involves creating a custom exception, `TropViteException`, and a `
 
 ### 2. `Vehicule` Class
 
-![Vehicule Class](src/ex1/imgs/cap2.png)
+![image_alt](https://github.com/lilyhabti/s1_projects/blob/main/java_tp3/src/ex1/imgs/cap2.PNG)
 
 ### 3. Example of Execution
 
 The `main` method tests `testVitesse` with two speeds, 80 and 100. Since 100 exceeds the speed limit, it triggers `TropViteException`, displaying the stack trace.
 
-![Example of Execution](src/ex1/imgs/cap3.png)
+![image_alt](https://github.com/lilyhabti/s1_projects/blob/main/java_tp3/src/ex1/imgs/cap3.PNG)
 
 ---
 
