@@ -1,3 +1,5 @@
+# Handling Exceptions
+# Exercice 1
 # Vehicule and TropViteException Exercise
 
 This exercise involves creating a custom exception, `TropViteException`, and a `Vehicule` class to test and throw this exception based on speed. The objective is to handle excessive speed cases and print the stack trace when the exception is triggered.
@@ -23,17 +25,17 @@ This exercise involves creating a custom exception, `TropViteException`, and a `
 
 ### 1. `TropViteException` Class
 
-![TropViteException Class](imgs/cap1.png)
+![TropViteException Class](ex1/imgs/cap1.png)
 
 ### 2. `Vehicule` Class
 
-![Vehicule Class](imgs/cap2.png)
+![Vehicule Class](ex1/imgs/cap2.png)
 
 ### 3. Example of Execution
 
 The `main` method tests `testVitesse` with two speeds, 80 and 100. Since 100 exceeds the speed limit, it triggers `TropViteException`, displaying the stack trace.
 
-![Example of Execution](imgs/cap3.png)
+![Example of Execution](ex1/imgs/cap3.png)
 
 ---
 
