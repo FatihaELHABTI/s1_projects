@@ -28,11 +28,32 @@ public class GestionGroupesEtudiants {
         Set<String> intersection = new HashSet<>(groupeA);
         intersection.retainAll(groupeB);
         System.out.println("Intersection des groupes A et B : " + intersection);
+        /*
+        //une autre maniere a faire :
+        for (String element : groupeA) {
+            if (groupeB.contains(element)) {
+                intersection.add(element); // Ajouter les éléments communs à l'intersection
+            }
+        }*/
 
         // 4. Afficher l'union des deux HashSets
         Set<String> union = new HashSet<>(groupeA);
         union.addAll(groupeB);
         System.out.println("Union des groupes A et B : " + union);
+
+        /*
+        Set<String> union = new HashSet<>();
+        // Ajouter tous les éléments de groupeA
+        for (String element : groupeA) {
+            union.add(element);
+        }
+
+        // Ajouter tous les éléments de groupeB (les doublons seront ignorés automatiquement)
+        for (String element : groupeB) {
+            union.add(element);
+        }
+        *
+        * */
     }
 }
 
