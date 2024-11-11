@@ -83,5 +83,45 @@ In the `main` method, `testRacineCarree` is called with values -5 and 25. Since 
 
 This exercise demonstrates custom exception handling in Java when dealing with invalid square root operations, such as attempting to calculate the square root of a negative number.
 
+# Exercice 3
+# Invalid Grade Exception Exercise
+
+This exercise involves creating a custom exception, `NoteInvalideException`, and an `Evaluateur` class to validate grades. The objective is to handle cases where a grade is outside the valid range (0-20) by throwing and catching an exception.
+
+## Exercise Requirements
+
+1. **NoteInvalideException Class**:
+   - This class inherits from `Exception`.
+   - It has no attributes.
+   - The constructor takes an integer as a parameter and calls the superclass constructor with the following message:  
+     `"Exception de type NoteInvalideException. Note invalide : " + grade`.
+
+2. **Evaluateur Class**:
+   - This class has no attributes.
+   - It includes an empty constructor.
+   - It provides a method `verifierNote(int grade)`, which throws a `NoteInvalideException` if the grade is less than 0 or greater than 20.
+
+3. **Execution**:
+   - The `main` method in the `Evaluateur` class creates an `Evaluateur` object and tests `verifierNote()` with two values: 15 and 25.
+   - If a `NoteInvalideException` is thrown, a `try-catch` block is used to display the exception message and the stack trace.
+
+## Code Overview
+
+### 1. `NoteInvalideException` Class
+
+![NoteInvalideException Class](https://github.com/lilyhabti/s1_projects/blob/main/java_tp3/src/ex3/imgs/cap1.PNG)
+
+### 2. `Evaluateur` Class
+
+![Evaluateur Class](https://github.com/lilyhabti/s1_projects/blob/main/java_tp3/src/ex3/imgs/cap2.PNG)
+
+### 3. Example of Execution
+
+In the `main` method, `verifierNote` is called with values 15 and 25. Since 25 is outside the valid range, it triggers `NoteInvalideException`, displaying the exception message and stack trace.
+
+![Example of Execution](https://github.com/lilyhabti/s1_projects/blob/main/java_tp3/src/ex3/imgs/cap3.PNG)
+
+---
+
 
 
