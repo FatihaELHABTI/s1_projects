@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class GestionProduitsApp {
 
     public static void main(String[] args) {
-
         //creation de la liste des produits
         ArrayList<Produit> produits = new ArrayList<>();
 
