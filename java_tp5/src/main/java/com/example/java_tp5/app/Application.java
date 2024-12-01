@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Application {
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         IMetier metier = new MetierImpl();
 
         // Test: Ajouter un département
@@ -107,5 +107,5 @@ public class Application {
         for (Professeur prof : searchResults) {
             System.out.println(prof.getIdProf() + " - " + prof.getNom() + " " + prof.getPrenom());
         }
-    }
+    }*/
 }

@@ -2,6 +2,8 @@ package com.example.java_tp5.dao;
 
 import com.example.java_tp5.config.SingletonConnexionDB;
 import com.example.java_tp5.models.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -14,20 +16,23 @@ public class MetierImpl implements IMetier {
     @Override
     public void ajouterProfesseur(Professeur professeur) {
         try {
-            String sql = "INSERT INTO professeur (nom, prenom, cin, adresse, telephone, email, date_recrutement, id_depart) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO professeur (id_prof,nom, prenom, cin, adresse, telephone, email, date_recrutement, id_depart) VALUES (?,?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, professeur.getNom());
-            ps.setString(2, professeur.getPrenom());
-            ps.setString(3, professeur.getCin());
-            ps.setString(4, professeur.getAdresse());
-            ps.setString(5, professeur.getTelephone());
-            ps.setString(6, professeur.getEmail());
-            ps.setDate(7, new java.sql.Date(professeur.getDateRecrutement().getTime()));
+            ps.setInt(1,professeur.getIdProf());
+            ps.setString(2, professeur.getNom());
+            ps.setString(3, professeur.getPrenom());
+            ps.setString(4, professeur.getCin());
+            ps.setString(5, professeur.getAdresse());
+            ps.setString(6, professeur.getTelephone());
+            ps.setString(7, professeur.getEmail());
+            ps.setDate(8, new java.sql.Date(professeur.getDateRecrutement().getTime()));
             if (professeur.getDepartement() != null) {
-                ps.setInt(8, professeur.getDepartement().getIdDepart());
+                ps.setInt(9, professeur.getDepartement().getIdDepart());
             } else {
-                ps.setObject(8, null);  // Passez null pour le département
-            }ps.executeUpdate();
+                ps.setNull(9, Types.INTEGER); // This explicitly sets NULL for the department
+            }
+
+            ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -69,8 +74,8 @@ public class MetierImpl implements IMetier {
 
     // List all professors
     @Override
-    public List<Professeur> listerProfesseurs() {
-        List<Professeur> professeurs = new ArrayList<>();
+    public ObservableList<Professeur> listerProfesseurs() {
+        ObservableList<Professeur> professeurs = FXCollections.observableArrayList();
         try {
             String sql = "SELECT * FROM professeur";
             Statement stmt = connection.createStatement();
@@ -140,9 +145,10 @@ public class MetierImpl implements IMetier {
     @Override
     public void ajouterDepartement(Departement departement) {
         try {
-            String sql = "INSERT INTO departement (nom) VALUES (?)";
+            String sql = "INSERT INTO departement (id_depart,nom) VALUES (?,?)";
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, departement.getNom());
+            ps.setInt(1,departement.getIdDepart());
+            ps.setString(2, departement.getNom());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -178,8 +184,8 @@ public class MetierImpl implements IMetier {
 
     // List all departments
     @Override
-    public List<Departement> listerDepartements() {
-        List<Departement> departements = new ArrayList<>();
+    public ObservableList<Departement> listerDepartements() {
+        ObservableList<Departement> departements = FXCollections.observableArrayList();
         try {
             String sql = "SELECT * FROM departement";
             Statement stmt = connection.createStatement();
