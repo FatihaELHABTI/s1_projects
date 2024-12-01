@@ -62,87 +62,59 @@ The controller layer manages user interactions and events in the UI, handling bu
 
 #### Key Methods in the Controller Classes:
 
-- **`addProfesseur()`** (in `ProfesseurController`):
-    - Triggered when the user clicks the "Add Professor" button.
+- **`insertProf()`** (in `ProfesseurController`):
+    - Triggered when the user clicks the "Ajouter" button.
     - Collects input from the user and adds a new professor.
     ```java
-    public void addProfesseur() {
-        Professeur professeur = new Professeur();
-        professeur.setNom(nameField.getText());
-        professeur.setPrenom(surnameField.getText());
-        // Set other fields...
-        metier.ajouterProfesseur(professeur); // Calls DAO method
-        refreshProfesseurList(); // Refresh the list view
+    private void insertProf(){
+        Professeur prof = new Professeur();
+        prof.setIdProf(Integer.parseInt(tfId.getText()));
+        prof.setNom(tfNom.getText());
+        prof.setPrenom(tfPrenom.getText());
+        prof.setCin(tfCin.getText());
+        prof.setAdresse(tfAdresse.getText());
+        prof.setTelephone(tfTelephone.getText());
+        prof.setEmail(tfEmail.getText());
+        LocalDate dateRecrutement = dpDate.getValue();
+        LocalDate localDate = dpDate.getValue();
+        if (localDate != null) {
+            // Conversion de LocalDate à java.util.Date
+            java.util.Date date = java.sql.Date.valueOf(localDate);
+            prof.setDateRecrutement(date);
+        } else {
+            // Gérer le cas où la date n'est pas sélectionnée
+            prof.setDateRecrutement(null);
+        }
+        metier.ajouterProfesseur(prof);
+        showProfesseurs();
+        clearFields();// Actualisation de la table
+
     }
     ```
 
 - **`updateProfesseur()`** (in `ProfesseurController`):
     - Triggered when the user selects a professor to update.
     - Updates the professor's details in the database.
-    ```java
-    public void updateProfesseur() {
-        Professeur selectedProfesseur = professorListView.getSelectionModel().getSelectedItem();
-        selectedProfesseur.setNom(updatedNameField.getText());
-        metier.modifierProfesseur(selectedProfesseur);
-        refreshProfesseurList();
-    }
-    ```
+    
 
 - **`deleteProfesseur()`** (in `ProfesseurController`):
     - Triggered when the user clicks the "Delete" button to delete a selected professor.
-    ```java
-    public void deleteProfesseur() {
-        Professeur selectedProfesseur = professorListView.getSelectionModel().getSelectedItem();
-        metier.supprimerProfesseur(selectedProfesseur.getIdProf());
-        refreshProfesseurList();
-    }
-    ```
 
 - **`searchProfesseurs()`** (in `ProfesseurController`):
     - Triggered when the user enters a search term.
     - Displays professors matching the search term.
-    ```java
-    public void searchProfesseurs() {
-        String keyword = searchField.getText();
-        List<Professeur> searchResults = metier.chercherProfesseursParMotCle(keyword);
-        professorListView.setItems(FXCollections.observableList(searchResults));
-    }
-    ```
 
-- **`addDepartement()`** (in `DepartementController`):
-    - Triggered when the user clicks the "Add Department" button.
+- **`insertDepartement()`** (in `DepartementController`):
+    - Triggered when the user clicks the "Ajouter" button.
     - Adds a new department to the database.
-    ```java
-    public void addDepartement() {
-        Departement departement = new Departement();
-        departement.setNom(departmentNameField.getText());
-        metier.ajouterDepartement(departement); // Calls DAO method
-        refreshDepartementList(); // Refresh the list view
-    }
-    ```
-
+    
 - **`updateDepartement()`** (in `DepartementController`):
     - Triggered when the user selects a department to update.
     - Updates the department's details.
-    ```java
-    public void updateDepartement() {
-        Departement selectedDepartement = departementListView.getSelectionModel().getSelectedItem();
-        selectedDepartement.setNom(updatedDepartmentNameField.getText());
-        metier.modifierDepartement(selectedDepartement);
-        refreshDepartementList();
-    }
-    ```
 
 - **`deleteDepartement()`** (in `DepartementController`):
     - Triggered when the user clicks the "Delete" button to delete a selected department.
-    ```java
-    public void deleteDepartement() {
-        Departement selectedDepartement = departementListView.getSelectionModel().getSelectedItem();
-        metier.supprimerDepartement(selectedDepartement.getIdDepart());
-        refreshDepartementList();
-    }
-    ```
-
+   
 #### Event Handling and UI Updates:
 - The controller methods are linked to UI elements such as buttons, text fields, and list views.
 - These methods process user input, update the database via DAO calls, and refresh the UI accordingly.
