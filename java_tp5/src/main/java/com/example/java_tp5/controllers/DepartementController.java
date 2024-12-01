@@ -76,7 +76,7 @@ public class DepartementController implements Initializable {
         colNomDep.setCellValueFactory(new PropertyValueFactory<>("nom"));
 
         colActionDep.setCellFactory(param -> new TableCell<>() {
-            private final Button actionButton = new Button("Assigner");
+            private final Button actionButton = new Button("Lister Professeurs");
 
             @Override
             protected void updateItem(Void unused, boolean empty) {
