@@ -32,10 +32,10 @@ The goal is to create multiple threads, each of which outputs a specific number 
 ### Example Output
 Threads may output their values in different orders due to concurrent execution. An example output could be:
 ```
-1
-1
-2
-2
+10
+10
+10
+10
 ...
 10
 10
